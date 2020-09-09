@@ -9,7 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Album implements Comparable<Album>{
+public class Album {
 
     @SerializedName("wrapperType")
     @Expose
@@ -408,12 +408,49 @@ public class Album implements Comparable<Album>{
     }
 
     @Override
-    public int compareTo(Album album) {
-        if(this.getReleaseDate().equals(album.getReleaseDate()))
-            return 0;
-        else if(this.getReleaseDate().after( album.getReleaseDate()))
-            return 1;
-        else
-            return -1;
+    public boolean equals(Object s) {
+        return getTrackName().equals(((Album) s).getTrackName());
+    }
+
+
+    @Override
+    public String toString() {
+        return "Album{" +
+                "wrapperType='" + wrapperType + '\'' +
+                ", kind='" + kind + '\'' +
+                ", artistId=" + artistId +
+                ", collectionId=" + collectionId +
+                ", trackId=" + trackId +
+                ", artistName='" + artistName + '\'' +
+                ", collectionName='" + collectionName + '\'' +
+                ", trackName='" + trackName + '\'' +
+                ", collectionCensoredName='" + collectionCensoredName + '\'' +
+                ", trackCensoredName='" + trackCensoredName + '\'' +
+                ", artistViewUrl='" + artistViewUrl + '\'' +
+                ", collectionViewUrl='" + collectionViewUrl + '\'' +
+                ", trackViewUrl='" + trackViewUrl + '\'' +
+                ", previewUrl='" + previewUrl + '\'' +
+                ", artworkUrl30='" + artworkUrl30 + '\'' +
+                ", artworkUrl60='" + artworkUrl60 + '\'' +
+                ", artworkUrl100='" + artworkUrl100 + '\'' +
+                ", collectionPrice=" + collectionPrice +
+                ", trackPrice=" + trackPrice +
+                ", releaseDate=" + releaseDate +
+                ", collectionExplicitness='" + collectionExplicitness + '\'' +
+                ", trackExplicitness='" + trackExplicitness + '\'' +
+                ", discCount=" + discCount +
+                ", discNumber=" + discNumber +
+                ", trackCount=" + trackCount +
+                ", trackNumber=" + trackNumber +
+                ", trackTimeMillis=" + trackTimeMillis +
+                ", country='" + country + '\'' +
+                ", currency='" + currency + '\'' +
+                ", primaryGenreName='" + primaryGenreName + '\'' +
+                ", isStreamable=" + isStreamable +
+                ", collectionArtistId=" + collectionArtistId +
+                ", collectionArtistName='" + collectionArtistName + '\'' +
+                ", collectionArtistViewUrl='" + collectionArtistViewUrl + '\'' +
+                ", contentAdvisoryRating='" + contentAdvisoryRating + '\'' +
+                '}';
     }
 }

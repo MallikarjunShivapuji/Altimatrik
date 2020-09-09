@@ -13,22 +13,8 @@ public class AlbumResponse {
     @SerializedName("results")
     @Expose
     private List<Album> results = null;
-
-    public Integer getResultCount() {
-        return resultCount;
-    }
-
-    public void setResultCount(Integer resultCount) {
-        this.resultCount = resultCount;
-    }
-
     public List<Album> getResults() {
         return results;
     }
-
-    public void setResults(List<Album> results) {
-        this.results = results;
-    }
-
 }
 

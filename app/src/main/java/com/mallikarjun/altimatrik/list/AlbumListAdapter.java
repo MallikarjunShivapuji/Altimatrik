@@ -14,9 +14,7 @@ import com.mallikarjun.altimatrik.R;
 import com.mallikarjun.altimatrik.repository.Album;
 
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Locale;
 
 import static com.bumptech.glide.request.RequestOptions.centerCropTransform;
 
@@ -24,7 +22,7 @@ public class AlbumListAdapter extends RecyclerView.Adapter<AlbumListAdapter.Cust
     private List<Album> dataList;
     private Context context;
 
-    public AlbumListAdapter(Context context, List<Album> dataList){
+    public AlbumListAdapter(Context context, List<Album> dataList) {
         this.context = context;
         this.dataList = dataList;
     }
@@ -38,8 +36,8 @@ public class AlbumListAdapter extends RecyclerView.Adapter<AlbumListAdapter.Cust
 
     @Override
     public void onBindViewHolder(CustomViewHolder holder, int position) {
-        holder.title.setText(dataList.get(position).getTrackName());//.getTitle());
-        holder.artist.setText("Artist: " + dataList.get(position).getArtistName());//.setText(dataList.get(position).getTrackName());
+        holder.title.setText(dataList.get(position).getTrackName());
+        holder.artist.setText("Artist: " + dataList.get(position).getArtistName());
         SimpleDateFormat outputFormat = new SimpleDateFormat("dd-MM-yyyy");
         holder.releaseDate.setText("Release Date: " + outputFormat.format(dataList.get(position).getReleaseDate()));
         holder.collectionName.setText("Collection: " + dataList.get(position).getCollectionName());
@@ -49,6 +47,8 @@ public class AlbumListAdapter extends RecyclerView.Adapter<AlbumListAdapter.Cust
                 .load(dataList.get(position).getArtworkUrl100())
                 .apply(centerCropTransform())
                 .into(holder.coverImage);
+
+        System.out.println(dataList.get(position).toString());
     }
 
     @Override
@@ -61,22 +61,28 @@ public class AlbumListAdapter extends RecyclerView.Adapter<AlbumListAdapter.Cust
         notifyDataSetChanged();
     }
 
+    public enum SearchMode {
+        TRACK_NAME,
+        ARTIST_NAME,
+        COLLECTION_NAME
+    }
+
     class CustomViewHolder extends RecyclerView.ViewHolder {
 
         public final View mView;
 
-        TextView title;
-        TextView artist;
-        TextView releaseDate;
-        TextView collectionName;
-        TextView collectionPrice;
+        private TextView title;
+        private TextView artist;
+        private TextView releaseDate;
+        private TextView collectionName;
+        private TextView collectionPrice;
         private ImageView coverImage;
 
         CustomViewHolder(View itemView) {
             super(itemView);
             mView = itemView;
 
-            title = mView.findViewById(R.id.tvAmbumName);
+            title = mView.findViewById(R.id.tvAlbumName);
             coverImage = mView.findViewById(R.id.ivAlbum);
             artist = mView.findViewById(R.id.tvartistName);
             releaseDate = mView.findViewById(R.id.tvreleaseDate);

@@ -17,7 +17,7 @@ public class AlbumRepository {
     }
 
     public static AlbumRepository getAppsRepositoryInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new AlbumRepository();
 
             Retrofit retrofit = new Retrofit.Builder()
